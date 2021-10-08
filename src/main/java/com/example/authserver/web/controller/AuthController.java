@@ -33,11 +33,13 @@ public class AuthController {
   @PostMapping("validate-token")
   public ApiResponse<Boolean> validateToken(
     @RequestHeader String token, @RequestParam String action) {
-    boolean isValid = jwtService.validateToken(token, action);
+    boolean hasPermissions = jwtService.validateToken(token, action);
+    ResponseCode responseCode = hasPermissions ? ResponseCode.EXITO : ResponseCode.TOKEN_SIN_PERMISOS;
     return ApiResponse.<Boolean>builder()
-      .code(ResponseCode.EXITO.getCode())
-      .message(ResponseCode.EXITO.getMessage())
-      .data(isValid).build();
+      .code(responseCode.getCode())
+      .message(responseCode.getMessage())
+      .data(hasPermissions)
+      .build();
   }
 
 }
