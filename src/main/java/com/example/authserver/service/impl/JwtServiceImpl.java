@@ -18,10 +18,11 @@ public class JwtServiceImpl implements JwtService {
   private static final String CLAIM_PERMISSIONS = "permissions";
 
   @Override
-  public String generateToken(String permissions) {
+  public String generateToken(String subject, String permissions) {
     Date currentDate = new Date();
     long endTime = currentDate.getTime() + JWT_DURATION;
     String jwt = Jwts.builder()
+      .setSubject(subject.toUpperCase())
       .setIssuedAt(currentDate)
       .setExpiration(new Date(endTime))
       .signWith(SignatureAlgorithm.HS256, JWT_SIGNATURE_SECRET)

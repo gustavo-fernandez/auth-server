@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     UserEntity userEntity = userRepository.getUserByUsername(username);
     List<String> roles = roleRepository.findRolesByUserId(userEntity.getId());
     String commaSeparatedRoles = roles.stream().collect(Collectors.joining(","));
-    String token = jwtService.generateToken(commaSeparatedRoles);
+    String token = jwtService.generateToken(username, commaSeparatedRoles);
     return AuthenticationResponse.builder()
       .loginSuccess(true)
       .token(token)

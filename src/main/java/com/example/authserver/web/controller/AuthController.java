@@ -29,7 +29,7 @@ public class AuthController {
 
   @GetMapping("generate-token")
   public ApiResponse<String> generateToken(@Length(min = 2) @RequestParam String permissions) {
-    String jwt = jwtService.generateToken(permissions);
+    String jwt = jwtService.generateToken("anonymous", permissions);
     return ApiResponse.<String>builder()
       .code(ResponseCode.EXITO.getCode())
       .message(ResponseCode.EXITO.getMessage())

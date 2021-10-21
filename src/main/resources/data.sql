@@ -5,6 +5,8 @@ INSERT INTO roles (user_id, name) VALUES ((SELECT id FROM user WHERE username = 
 INSERT INTO roles (user_id, name) VALUES ((SELECT id FROM user WHERE username = 'hugo'), 'listar-una-cuenta');
 INSERT INTO roles (user_id, name) VALUES ((SELECT id FROM user WHERE username = 'hugo'), 'crear-cuenta');
 INSERT INTO roles (user_id, name) VALUES ((SELECT id FROM user WHERE username = 'hugo'), 'transferencias');
+INSERT INTO roles (user_id, name) VALUES ((SELECT id FROM user WHERE username = 'hugo'), 'productos');
 
 INSERT INTO roles (user_id, name) VALUES ((SELECT id FROM user WHERE username = 'gustavo'), 'listar-una-cuenta');
 INSERT INTO roles (user_id, name) VALUES ((SELECT id FROM user WHERE username = 'gustavo'), 'transferencias');
+INSERT INTO roles (user_id, name) VALUES ((SELECT id FROM user WHERE username = 'gustavo'), 'productos');
